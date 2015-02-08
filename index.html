@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Living cost calculator</title>
+
+<style>
+html {
+	background: background: #f3e2c7;
+background: -moz-linear-gradient(top,  #f3e2c7 0%, #c19e67 36%, #b68d4c 57%, #e9d4b3 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3e2c7), color-stop(36%,#c19e67), color-stop(57%,#b68d4c), color-stop(100%,#e9d4b3));
+background: -webkit-linear-gradient(top,  #f3e2c7 0%,#c19e67 36%,#b68d4c 57%,#e9d4b3 100%);
+background: -o-linear-gradient(top,  #f3e2c7 0%,#c19e67 36%,#b68d4c 57%,#e9d4b3 100%);
+background: -ms-linear-gradient(top,  #f3e2c7 0%,#c19e67 36%,#b68d4c 57%,#e9d4b3 100%);
+background: linear-gradient(to bottom,  #f3e2c7 0%,#c19e67 36%,#b68d4c 57%,#e9d4b3 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3e2c7', endColorstr='#e9d4b3',GradientType=0 );
+	padding: 0;
+	margin: 0;
+	font-family: Verdana;
+}
+
+#container {
+	width: 100%;
+	
+}
+
+header {
+	width: 100%;
+	text-align: center; 
+	background: inherit;
+	color: brown;
+	font-size: 25pt;
+}
+
+main {
+	
+	float: left;
+	width: 73%;
+	margin-left: 3%;
+	
+}
+
+#tablehead {
+	width: 100%;
+	text-align: right; 
+	
+	
+}
+
+#tablehead label {
+	width: 18%;
+	text-align: center;
+	margin-right: 3%;
+	color: white;
+	text-decoration: none;
+}
+
+fieldset {
+	border: none;
+	background: #745CFF;
+}
+
+label {
+	font-weight: bold;
+	display: inline-block;
+	width: 15%;
+	text-decoration: underline;
+}
+
+input {
+	text-align: center;
+	font-size: 12pt;
+	margin: 1%;
+	width: 18%;
+	height: 3em;
+	font-weight: bolder;
+}
+
+/*
+.clearfixed:after{
+	content:" ";	
+	display: table;
+	clear: both;
+}*/
+
+
+
+#sidebar {
+	
+	float: left;
+	width: 19%;
+	margin: 3em 3% 0 1%;
+}
+
+#annual {
+	text-align: center;
+	margin-bottom: 6em;
+	background: inherit;
+	
+}
+
+#income {
+	text-align: center;
+	background: inherit;
+}
+
+#annualincome {
+	height: 5em;
+}
+
+</style>
+</head>
+<body>
+<div id="container"> <!-- BEGINNING OF CONTAINER -->
+
+	<header> <!-- BEGINNING OF HEADER -->
+		<h1>LIVING COST CALCULATOR</h1>
+	</header> <!-- END OF HEADER -->
+
+	<main class="clearfixed"> <!-- BEGINNING OF MAIN CONTENT -->
+		
+		<form>
+			<fieldset id="calculator"/>
+				<div id="tablehead"/>
+				<label for="weeklyhead" >WEEKLY</label>
+				<label for="fortnightlyhead" >FORTNIGHTLY</label>
+				<label for="monthlyhead" >MONTHLY</label>
+				<label for="yearlyhead">YEARLY</label>
+				</div>
+
+				<fieldset style="background: #C6E2FF";/>
+				<label for="accomodation">Accomodation</label>
+				<input type="number" id="weekly1" name="weekly"/>
+				<input type="number" id="fortnightly1" name="fortnightly"/>
+				<input type="number" id="monthly1" name="monthly"/>
+				<input type="number" id="yearly1" name="yearly"/>
+				</fieldset>
+					
+				<fieldset style="background: #F9E8FC";/>
+				<label for="power">Power</label>
+				<input type="number" id="weekly2" name="weekly"/>
+				<input type="number" id="fortnightly2" name="fortnightly"/>
+				<input type="number" id="monthly2" name="monthly"/>
+				<input type="number" id="yearly2" name="yearly"/>
+				</fieldset>
+					
+				<fieldset style="background: #C6E2FF";/>
+				<label for="groceries">Groceries</label>
+				<input  type="number" id="weekly3" name="weekly"/>
+				<input type="number" id="fortnightly3" name="fortnightly"/>
+				<input type="number" id="monthly3"name="monthly"/>
+				<input type="number" id="yearly3" name="yearly"/>
+				</fieldset>
+
+				<fieldset style="background: #F9E8FC";/>
+				<label for="transport">Transport</label>
+				<input type="number" id="weekly4" name="weekly"/>
+				<input type="number" id="fortnightly4" name="fortnightly"/>
+				<input type="number" id="monthly4"/ name="monthly">
+				<input type="number" id="yearly4" name="yearly"/>
+				</fieldset>
+	          	
+	          	<fieldset style="background: #FF0D74; margin-top: 3em";/>
+				<label for="totals">TOTALS</label>
+				<input type="number" id="totalweekly" name="total"/>
+				<input type="number" id="totalfortnightly" name="total"/>
+				<input type="number" id="totalmonthly" name="total"/>
+				<input type="number" id="totalyearly" name="total"/>
+				</fieldset>
+			</fieldset>		
+		</form>
+	</main> <!-- END OF MAIN CONTENT -->
+	<div id="sidebar"> <!-- BEGINNING OF SIDE BAR -->
+		<div id="annual">
+			<h2>YOUR TOTAL YEARLY EXPENSES ARE:<h2>
+			<div id="annualtotal">
+				$ NZD
+			</div>
+		</div>
+		
+		<div id="income">
+			<h2>YOUR YEARLY INCOME:<h2>
+			<div id="incometotal">
+				$ NZD
+			</div>
+		</div>
+	</div>	<!-- END OF SIDE BAR -->
+</div> <!-- END OF CONTAINER -->
+
+
+<script> 
+// find the required input tag and loop through with any user input
+var week = ['#weekly1','#weekly2', '#weekly3', '#weekly4'];
+for(var n=0;n<week.length;n++) {
+
+	//add an EventListener to selection 
+	document.querySelector(week[n]).addEventListener("blur", function check() {
+		//check if the inputs are numbers only, if true execute add calculation
+		if 	(numberOnly(this)){
+		var arr = document.getElementsByName('weekly');
+    	var tot1 = 0;
+    	 	
+			for(var i=0;i<arr.length;i++){
+        	if(parseInt(arr[i].value))
+           	tot1 += parseInt(arr[i].value);
+            perfort = this.value*52/26; //calculate the fortnightly costs
+            permont = this.value*52/12; //caluclate the monthly costs
+            peryear = this.value*52;} //calculate the yearly costs
+            
+            
+			// display result into this field
+			document.getElementById('totalweekly').value = tot1;
+			// multiply by two = fortnightly display into next input
+			this.nextElementSibling.value = perfort;
+			// multiply by 52/12 = monthly display into next next input
+			this.nextElementSibling.nextElementSibling.value = permont.toFixed(2);
+			// multiply by 12 = yearly diplay into next next next input
+			this.nextElementSibling.nextElementSibling.nextElementSibling.value = peryear.toFixed(2);
+
+			
+			} // closes the if statement
+		// if input is false alert message
+		else{ alert('This is not a valid number');
+		      this.value = "";} // empty the box if wrong,closes the else statement
+
+}); // closes line 180 --> function check
+} //closes line 178 --> for loop
+
+var fortnight = ['#fortnightly1', '#fortnightly2', '#fortnightly3', '#fortnightly4'];
+for (var n=0;n<fortnight.length;n++) {
+
+	document.querySelector(fortnight[n]).addEventListener("blur", function check2() {
+		if (numberOnly (this)){
+		var sec = document.getElementsByName('fortnightly');
+		var tot2 = 0;
+
+			for(var i=0;i<sec.length;i++){
+        	if(parseInt(sec[i].value))
+           	tot2 += parseInt(sec[i].value);
+           	perweek = this.value*26/52; //calculate the weekly costs
+            permont = this.value*26/12; //caluclate the monthly costs
+            peryear = this.value*26;} //calculate the yearly costs
+
+			document.getElementById('totalfortnightly').value = tot2;
+			this.previousElementSibling.value = perweek.toFixed(2);
+			this.nextElementSibling.value = permont.toFixed(2);
+			this.nextElementSibling.nextElementSibling.value = peryear.toFixed(2);
+			}
+		
+		else{ alert('This is not a valid number');
+		      this.value = "";} // 
+}); 
+}
+
+var month = ['#monthly1', '#monthly2', '#monthly3', '#monthly4'];
+for (var n=0;n<month.length;n++) {
+
+	document.querySelector(month[n]).addEventListener("blur", function check3() {
+		if (numberOnly (this)){
+		var thr = document.getElementsByName('monthly');
+		var tot3 = 0;
+
+			for(var i=0;i<thr.length;i++){
+        	if(parseInt(thr[i].value))
+           	tot3 += parseInt(thr[i].value);
+           	perweek = this.value*12/52; //calculate the weekly costs
+            perfort = this.value*12/26; //caluclate the fortnightly costs
+            peryear = this.value*12;} //calculate the yearly costs
+
+			document.getElementById('totalmonthly').value = tot3;
+			this.previousElementSibling.previousElementSibling.value = perweek.toFixed(2);
+			this.previousElementSibling.value = perfort.toFixed(2);
+			this.nextElementSibling.value = peryear.toFixed(2);
+			}
+		
+		else{ alert('This is not a valid number');
+		      this.value = "";} // 
+}); 
+}
+
+var year = ['#yearly1', '#yearly2', '#yearly3', '#yearly4'];
+for (var n=0;n<year.length;n++) {
+
+	document.querySelector(year[n]).addEventListener("blur", function check3() {
+		if (numberOnly (this)){
+		var vor = document.getElementsByName('yearly');
+		var tot4 = 0;
+
+			for(var i=0;i<vor.length;i++){
+        	if(parseInt(vor[i].value))
+           	tot4 += parseInt(vor[i].value);
+           	perweek = this.value/52; //calculate the weekly costs
+            perfort = this.value/26; //caluclate the fortnightly costs
+            permont = this.value/12;} //calculate the monthly costs
+
+			document.getElementById('totalyearly').value = tot4;
+			this.previousElementSibling.previousElementSibling.previousElementSibling.value = perweek.toFixed(2);
+			this.previousElementSibling.previousElementSibling.value = perfort.toFixed(2);
+			this.previousElementSibling.value = permont.toFixed(2);
+			}
+		
+		else{ alert('This is not a valid number');
+		      this.value = "";} // 
+}); 
+}
+
+var sum = document.querySelector('#totalyearly');
+
+
+sum.addEventListener ("blur", function(){
+	var expenses = document.querySelector('#annualtotal');
+	expenses.innerText = '$ '+parseInt(sum.value)+" NZD";
+	console.log ( sum.value );
+});
+
+
+// var tot4 = document.querySelector('#totalyearly');
+// var expenses = document.querySelector('#annualtotal');
+// expenses.innerText = '$ '+parseInt(tot4)+" NZD";
+
+
+
+// // var income = prompt('Enter your yearly income / salary:');
+// // var fill = document.querySelector('#incometotal');
+// // var amount = parseInt(income) - parseInt(tot4);
+// // console.log ( tot4 );
+// // fill.innerText = '$ '+amount+" NZD";
+
+// var income = prompt('Enter your yearly income / salary:');
+// tot4.addEventListener ("blur", function () {
+
+// 	var fill = document.querySelector('#incometotal');
+// 	var amount = parseInt(income.value) - parseInt(tot4.value);
+// 	fill.innerText = '$ '+amount+" NZD";
+// });
+
+
+
+
+
+function numberOnly (currObj) {
+    return /^[-+]?[0-9]*\.?[0-9]+$/.test(currObj.value);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
